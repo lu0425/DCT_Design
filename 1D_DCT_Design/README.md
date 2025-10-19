@@ -165,7 +165,16 @@ Convert floating-point DCT coefficients to 8-bit fixed-point binary representati
 The Verilog implementation directly maps the optimized equations into hardware.
 
 ### ◆ Step 5: Verification
+The verification compares three computation methods to validate the Verilog implementation:
 
+1. **MATLAB Floating-Point Results**: Ideal computation using original coefficients
+2. **MATLAB Fixed-Point Results**: Computation using 8-bit quantized coefficients  
+3. **Verilog Simulation Output**: Hardware result (divided by 2<sup>8</sup>, since coefficients are multiplied by 2<sup>8</sup> during fixed-point operations)
+<div align="center">
+  <img src="media/result_comparison.png" alt="result comparison" width="900"/>
+</div>
+
+&nbsp;
 
 &nbsp;
 
