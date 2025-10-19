@@ -168,39 +168,6 @@ The Verilog implementation directly maps the optimized equations into hardware.
 
 ---
 
-## Verification Results
-
-### MATLAB Verification
-
-<div align="center">
-  <img src="media/matlab_verification.png" alt="MATLAB Verification" width="800"/>
-  <p><i>Figure: Comparison of MATLAB and Verilog results</i></p>
-</div>
-
-#### Test Input:
-```matlab
-X = [10; 110; 20; 78; 27; 60; 54; 3];
-```
-
-#### Results Comparison:
-
-| Output | MATLAB (floating) | MATLAB (fixed 8-bit) | Verilog | Match |
-|--------|-------------------|----------------------|---------|-------|
-| z0 | 255.9727 | 255.9453 | 255.9453 | ✅ |
-| z1 | 41.1546 | 40.2500 | 40.8125 | ✅ |
-| z2 | -52.8515 | -53.7070 | -52.9844 | ✅ |
-| z3 | -5.7926 | 5.1836 | 6.0078 | ✅ |
-| z4 | -89.0955 | -90.0391 | -89.0859 | ✅ |
-| z5 | -16.4336 | -17.2266 | -16.4453 | ✅ |
-| z6 | -112.8128 | -113.3477 | -112.2969 | ✅ |
-| z7 | -113.0251 | -113.8320 | -112.8516 | ✅ |
-
-**Analysis**:
-- ✅ Verilog output closely matches MATLAB fixed-point computation
-- ✅ Small differences are due to quantization and rounding methods
-- ✅ Error between Verilog and MATLAB is **very small** (< 1%)
-- ✅ Functional correctness verified
-
 
 ## Conclusion
 
