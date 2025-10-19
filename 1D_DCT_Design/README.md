@@ -81,7 +81,7 @@ Synthesis completed.
 |-----------|-------|-------------|
 | `z0~z7` | 21-bit | DCT coefficient 0 - DC component (signed) |
 
-## Method
+## Method & Results
 
 The design methodology consists of four main steps: coefficient bit-width calculation, coefficient conversion, algorithm optimization, and Verilog implementation.
 
