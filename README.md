@@ -24,14 +24,10 @@ This directory contains hardware design projects for the 1D (One-Dimensional) an
 
 The primary difference lies in the input data structure and the computational process:
 
-### 1D DCT
-- **Input**: Operates on a single vector of N data points
-- **Process**: The transformation is completed in one step
-- **Complexity**: O(N log N) or O(N²) depending on implementation
-
-### 2D DCT
-- **Input**: Operates on an N×N data matrix
-- **Process**: Typically implemented using the **Row-Column Decomposition** method:
-  1. Perform 1D DCT on every **row** of the input matrix
-  2. Perform 1D DCT on every **column** of the resulting matrix from step 1
-- **Complexity**: Requires two sequential sets of 1D DCT operations, making the computational complexity significantly higher than a single 1D DCT
+| Aspect | 1D DCT | 2D DCT |
+|--------|--------|--------|
+| **Input** | Single vector of N data points | N×N data matrix |
+| **Process** | Single-step transformation | Row-Column Decomposition:<br>1. 1D DCT on each row<br>2. 1D DCT on each column |
+| **Complexity** | O(N log N) or O(N²) | Significantly higher (2× 1D DCT operations) |
+| **Applications** | Audio, speech processing | Image, video compression |
+| **Hardware** | Single 1D DCT module | Reuses 1D DCT module twice |
