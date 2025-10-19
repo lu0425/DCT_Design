@@ -162,6 +162,10 @@ Convert floating-point DCT coefficients to 8-bit fixed-point binary representati
 
 The Verilog implementation directly maps the optimized equations into hardware.
 
+### ◆ Step 5: Verification
+
+
+
 ## RTL Waveform
 
 *To be added: Simulation waveforms from ModelSim/VCS*
