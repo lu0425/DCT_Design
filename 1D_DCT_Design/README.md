@@ -52,7 +52,6 @@ The implementation leverages the **symmetric and anti-symmetric properties** of 
 
 By factoring out common coefficients and pre-computing differences like `[X(0) - X(7)]`, the design significantly reduces hardware multiplier count.
 
----
 
 &nbsp;
 
