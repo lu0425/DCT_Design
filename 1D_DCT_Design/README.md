@@ -173,10 +173,13 @@ Referring to the DCT matrix shown in the [Overview](#overview) section:
 | **Direct Matrix** | 8 × 8 = 64 | Straightforward |
 | **Optimized** | 4~8 per output, ~32 total | **50% reduction** |
 
+---
 
 ### ◆ Step 4: Verilog RTL Implementation
 
 The Verilog implementation directly maps the optimized equations into hardware.
+
+---
 
 ### ◆ Step 5: Verification
 The verification compares three computation methods to validate the Verilog implementation:
