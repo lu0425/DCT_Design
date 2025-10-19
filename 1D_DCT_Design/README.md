@@ -90,7 +90,7 @@ Synthesis completed.
 
 | Port Name | Width | Description |
 |-----------|-------|-------------|
-| `z0~z7` | 21-bit | DCT coefficient 0 - DC component (signed) |
+| `z0~z7` | 21-bit | DCT coefficient - DC component (signed) |
 
 &nbsp;
 
