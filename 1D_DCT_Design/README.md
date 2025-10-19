@@ -8,10 +8,17 @@
 - [Method & Results](#method--results)
 - [RTL Waveform](#rtl-waveform)
 
+&nbsp;
+
 ## Overview
 
 This project implements a 1D (One-Dimensional) 8-point Discrete Cosine Transform (DCT) using Verilog HDL. The 1D DCT is a fundamental signal processing operation that transforms time-domain or spatial-domain signals into the frequency domain.
 The 1D DCT performs transformation on a sequence of N points, converting the input signal into frequency domain coefficients. It is widely used in audio compression, speech processing, and as a building block for 2D DCT in image compression.
+This project can be summarized in the following points:
+1. **Algorithm Optimization**: Exploits DCT matrix symmetry to reduce multiplications by 50%
+2. **Fixed-Point Design**: Achieves SQNR ≥ 40 dB with 8-bit coefficients
+3. **Hardware Efficiency**: Minimizes multiplier count for lower area and power
+4. **Verified Correctness**: Verilog output matches MATLAB reference with high accuracy
 
 ### Mathematical Expression
 The following figure shows the architecture of expanding the DCT formula using a matrix.
@@ -48,11 +55,14 @@ By factoring out common coefficients and pre-computing differences like `[X(0) -
 
 ---
 
+&nbsp;
+
 ## Implement Status
 
 Synthesis completed.
 
----
+&nbsp;
+
 
 ## File Description
 
@@ -63,7 +73,8 @@ Synthesis completed.
 | `bits_calculate.m` | MATLAB script for coefficient bit-width calculation, SQNR analysis, and fixed-point quantization |
 | `coeff_conversion.m` | MATLAB script for converting floating-point coefficients to 8-bit binary representation |
 
----
+&nbsp;
+
 
 ## Specification
 
@@ -80,6 +91,8 @@ Synthesis completed.
 | Port Name | Width | Description |
 |-----------|-------|-------------|
 | `z0~z7` | 21-bit | DCT coefficient 0 - DC component (signed) |
+
+&nbsp;
 
 ## Method & Results
 
@@ -115,10 +128,6 @@ The design methodology consists of four main steps: coefficient bit-width calcul
 
 Convert floating-point DCT coefficients to 8-bit fixed-point binary representation.
 
-<div align="center">
-  <img src="media/coeff.png" alt="Coefficient Conversion" width="300"/>
-</div>
-
 **Output** (8-bit binary coefficients):
 ```
 11111011  (c1)
@@ -150,13 +159,6 @@ Convert floating-point DCT coefficients to 8-bit fixed-point binary representati
 | **Direct Matrix** | 8 × 8 = 64 | Straightforward |
 | **Optimized** | 4~8 per output, ~32 total | **50% reduction** |
 
-**Benefits**:
-1. ✅ Reduces number of hardware multipliers needed
-2. ✅ Pre-computes differences (e.g., `X(0) - X(7)`) only once
-3. ✅ Reuses intermediate results across multiple outputs
-4. ✅ Minimizes critical path delay
-
----
 
 ### ◆ Step 4: Verilog RTL Implementation
 
@@ -165,22 +167,10 @@ The Verilog implementation directly maps the optimized equations into hardware.
 ### ◆ Step 5: Verification
 
 
+&nbsp;
 
 ## RTL Waveform
+<div align="center">
+  <img src="media/waveform.png" alt="Waveform" width="800"/>
+</div>
 
-*To be added: Simulation waveforms from ModelSim/VCS*
-
----
-
-
-## Conclusion
-
-This 1D 8-point DCT implementation demonstrates:
-
-1. **Algorithm Optimization**: Exploits DCT matrix symmetry to reduce multiplications by 50%
-2. **Fixed-Point Design**: Achieves SQNR ≥ 40 dB with 8-bit coefficients
-3. **Hardware Efficiency**: Minimizes multiplier count for lower area and power
-4. **Verified Correctness**: Verilog output matches MATLAB reference with high accuracy
-
-
----
