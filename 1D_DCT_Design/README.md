@@ -146,7 +146,7 @@ Convert floating-point DCT coefficients to 8-bit fixed-point binary representati
 **Key Insight**: The DCT coefficient matrix exhibits **symmetric and anti-symmetric properties**, allowing us to reorganize the computation to reduce multiplications.
 
 <div align="center">
-  <img src="media/simplified_matrix.png" alt="Optimized DCT Equations" width="700"/>
+  <img src="media/simplified_matrix.png" alt="Optimized DCT Equations" width="600"/>
   <p><i>Figure: Reorganized DCT equations exploiting symmetry</i></p>
 </div>
 
@@ -185,7 +185,7 @@ The verification compares three computation methods to validate the Verilog impl
 2. **MATLAB Fixed-Point Results**: Computation using 8-bit quantized coefficients  
 3. **Verilog Simulation Output**: Hardware result (divided by 2<sup>8</sup>, since coefficients are multiplied by 2<sup>8</sup> during fixed-point operations)
 <div align="center">
-  <img src="media/result_comparison.png" alt="result comparison" width="900"/>
+  <img src="media/result_comparison.png" alt="result comparison" width="800"/>
 </div>
 
 &nbsp;
