@@ -2,7 +2,7 @@
 
 This directory contains hardware design projects for the 1D (One-Dimensional) and 2D (Two-Dimensional) Discrete Cosine Transform (DCT).
 
----
+&nbsp;
 
 ## Project Overview
 
@@ -18,7 +18,7 @@ This directory contains hardware design projects for the 1D (One-Dimensional) an
 - **Applications**: Image and video compression
 - **Core Operation**: Performs transformation on an N×N data block
 
----
+&nbsp;
 
 ## Operational Differences (1D vs. 2D DCT)
 
