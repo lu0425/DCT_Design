@@ -179,7 +179,5 @@ The verification compares three computation methods to validate the Verilog impl
 &nbsp;
 
 ## RTL Waveform
-<div align="center">
-  <img src="media/waveform.png" alt="Waveform" width="800"/>
-</div>
+<img src="media/waveform.png" alt="Waveform" width="800"/>
 
