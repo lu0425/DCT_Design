@@ -103,7 +103,7 @@ The design methodology consists of four main steps: coefficient bit-width calcul
 **Objective**: Determine the minimum bit width required to achieve SQNR ≥ 40 dB.
 
 <div align="center">
-  <img src="media/sbit_cal.png" alt="SQNR vs Bit Width" width="600"/>
+  <img src="media/bit_cal.png" alt="SQNR vs Bit Width" width="600"/>
   <p><i>Figure: SQNR analysis for different coefficient bit widths</i></p>
 </div>
 
@@ -173,8 +173,6 @@ The verification compares three computation methods to validate the Verilog impl
 <div align="center">
   <img src="media/result_comparison.png" alt="result comparison" width="900"/>
 </div>
-
-&nbsp;
 
 &nbsp;
 
