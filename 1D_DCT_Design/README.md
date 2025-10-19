@@ -5,7 +5,7 @@
 - [Implement Status](#implement-status)
 - [File Description](#file-description)
 - [Specification](#specification)
-- [Method & Results](#method-&-results)
+- [Method & Results](#method--results)
 - [RTL Waveform](#rtl-waveform)
 
 ## Overview
