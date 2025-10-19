@@ -6,15 +6,13 @@ This directory contains hardware design projects for the 1D (One-Dimensional) an
 
 ## Project Overview
 
-### 1. 1D DCT Design
-📁 **Directory**: [`1D_DCT_Design/`](./1D_DCT_Design)
+### 1. [1D DCT Design](./1D_DCT_Design)
 
 - **Purpose**: Processes a one-dimensional signal sequence, transforming it from the time or spatial domain into the frequency domain
 - **Applications**: Primarily used for audio compression and speech processing
 - **Core Operation**: Performs transformation on a sequence of N points in a single direction (e.g., a single row or column)
 
-### 2. 2D DCT Design
-📁 **Directory**: [`2D_DCT_Design/`](./2D_DCT_Design)
+### 2. [2D DCT Design](./2D_DCT_Design)
 
 - **Purpose**: Processes two-dimensional signal data blocks, such as image pixel matrices, which is essential for image compression (e.g., JPEG standard)
 - **Applications**: Image and video compression
