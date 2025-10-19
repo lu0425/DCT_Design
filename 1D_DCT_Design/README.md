@@ -43,13 +43,12 @@ Where:
 ### Design Approach
 
 The implementation leverages the **symmetric and anti-symmetric properties** of the DCT coefficient matrix to reorganize computations:
-```
-Traditional Matrix Multiplication:
-64 multiplications (8×8)
 
-Optimized Approach:
-32 multiplications (50% reduction)
-```
+| Approach | Multiplications | Description |
+|----------|----------------|-------------|
+| **Traditional Matrix Multiplication** | 64 (8×8) | Direct matrix-vector multiplication |
+| **Optimized Approach** | 32 | Exploits coefficient symmetry |
+| **Reduction** | **50%** | Hardware efficiency improvement |
 
 By factoring out common coefficients and pre-computing differences like `[X(0) - X(7)]`, the design significantly reduces hardware multiplier count.
 
@@ -151,6 +150,22 @@ Convert floating-point DCT coefficients to 8-bit fixed-point binary representati
   <img src="media/simplified_matrix.png" alt="Optimized DCT Equations" width="700"/>
   <p><i>Figure: Reorganized DCT equations exploiting symmetry</i></p>
 </div>
+
+#### Coefficient Mapping
+
+Referring to the DCT matrix shown in the [Overview](#overview) section:
+
+| Symbol | DCT Coefficient | Mathematical Expression |
+|--------|-----------------|------------------------|
+| A | c1 | cos(θ) = cos(π/16) |
+| B | c3 | cos(3θ) = cos(3π/16) |
+| C | c5 | cos(5θ) = cos(5π/16) |
+| D | c7 | cos(7θ) = cos(7π/16) |
+| M | c2 | cos(2θ) = cos(2π/16) |
+| N | c6 | cos(6θ) = cos(6π/16) |
+| P | c4 | cos(4θ) = cos(4π/16) = 1/√2 |
+
+*where θ = π/16*
 
 #### Computational Savings:
 
