@@ -199,7 +199,7 @@ The following rwo figures show the Verilog results and the Matlab results. it ca
 </div>
 
 <div align="center">
-  <img src="media/matlab_result.png" alt="Matlab Result" width="500"/>
+  <img src="media/matlab_result.png" alt="Matlab Result" width="250"/>
   <p><i>Figure: Matlab Result</i></p>
 </div>
 
