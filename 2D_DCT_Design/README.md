@@ -126,9 +126,7 @@ The design methodology consists of three main parts: coefficient bit-width calcu
 
 **Result**: 8-bit representation (7-bit + 1 sign bit) achieves SQNR ≥ 40 dB
 
-#### Coefficient Conversion to Binary
-
-Convert floating-point coefficients to 8-bit fixed-point binary
+After determining the number of bits of the coefficient, we convert the floating-point coefficients to 8-bit fixed-point binary using Matlab.
 
 **Note**: Using MATLAB's `dec2bin` function with one's complement conversion may introduce minor errors in verification.
 
