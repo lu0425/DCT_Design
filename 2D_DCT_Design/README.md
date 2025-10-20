@@ -5,7 +5,7 @@
 - [Implement Status](#implement-status)
 - [File Description](#file-description)
 - [Specification](#specification)
-- [Method](#method)
+- [Method & Results](#method--results)
 - [RTL Waveform](#rtl-waveform)
 - [Synthesis Results](#synthesis-results)
 
@@ -148,7 +148,7 @@ c7: 0110010
 
 ---
 
-## Method
+## Method & Results
 
 The design methodology consists of three main parts: coefficient bit-width calculation, Verilog architecture design, and implementation.
 
