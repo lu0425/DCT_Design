@@ -6,8 +6,10 @@
 - [File Description](#file-description)
 - [Specification](#specification)
 - [Method & Results](#method--results)
-- [RTL Waveform](#rtl-waveform)
+- [RTL Waveform & Comparison with MATLAB](#rtl-waveform--comparison-with-matlab)
 - [Synthesis Results](#synthesis-results)
+
+&nbsp;
 
 ## Overview
 
@@ -41,11 +43,13 @@ And the figure below is the flow chart of the design:
 - **Fixed-Point Arithmetic**: Uses 8-bit (7-bit + 1 sign bit) coefficient representation
 - **8×8 Block Processing**: Standard size for JPEG compression
 
+&nbsp;
+
 ## Implement Status
 
 Synthesis completed.
 
----
+&nbsp;
 
 ## File Description
 
@@ -55,6 +59,7 @@ Synthesis completed.
 | `coeff_conversion.m` | MATLAB script for converting floating-point coefficients to binary |
 | `coeff_binary.txt` | List of 8-bit binary coefficients (c1~c7) |
 
+&nbsp;
 
 ## Specification
 
@@ -98,7 +103,7 @@ c6: 01100001
 c7: 00110001
 ```
 
----
+&nbsp;
 
 ## Method & Results
 
@@ -109,7 +114,7 @@ The design methodology consists of three main parts: coefficient bit-width calcu
 **Objective**: Determine the minimum bit width required to achieve SQNR ≥ 40 dB.
 
 <div align="center">
-  <img src="media/sqnr_analysis.png" alt="SQNR Analysis" width="600"/>
+  <img src="media/bit_cal.png" alt="SQNR Analysis" width="600"/>
   <p><i>Figure: SQNR vs. Coefficient Bit-Width</i></p>
 </div>
 
@@ -123,35 +128,13 @@ The design methodology consists of three main parts: coefficient bit-width calcu
 
 #### Coefficient Conversion to Binary
 
-Convert floating-point coefficients to 8-bit fixed-point binary:
-```matlab
-s = pi/16;
-c1 = cos(s);
-c2 = cos(2*s);
-c3 = cos(3*s);
-c4 = cos(4*s);
-c5 = cos(5*s);
-c6 = cos(6*s);
-c7 = cos(7*s);
-
-a = [c1 c2 c3 c4 c5 c6 c7];
-
-for i = 1:numel(a)
-    binaryCoeff = dec2bin(floor(a(i) * 2^7), 7);
-    fprintf('%s\n', binaryCoeff);
-end
-```
+Convert floating-point coefficients to 8-bit fixed-point binary
 
 **Note**: Using MATLAB's `dec2bin` function with one's complement conversion may introduce minor errors in verification.
 
 ---
 
 ### ◆ Step 2: Verilog Architecture
-
-<div align="center">
-  <img src="media/2d_dct_architecture.png" alt="2D DCT Architecture" width="600"/>
-  <p><i>Figure: 2D DCT Implementation Architecture</i></p>
-</div>
 
 Two implementation approaches for 2D DCT:
 
@@ -208,18 +191,17 @@ The complete Verilog implementation includes:
 5. **Output Stage**: Final 8×8 DCT coefficient output
 
 
-### ◆ Step 5: Verification
+&nbsp;
 
-
-## RTL Waveform
+## RTL Waveform & Comparison with MATLAB
 
 <div align="center">
-  <img src="media/matlab_verification.png" alt="MATLAB Verification" width="800"/>
+  <img src="media/verilog_result.png" alt="Verilog Result" width="800"/>
   <p><i>Figure: MATLAB floating-point vs. fixed-point comparison</i></p>
 </div>
 
 
----
+&nbsp;
 
 ## Synthesis Results
 
