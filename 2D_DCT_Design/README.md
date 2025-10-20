@@ -1,4 +1,4 @@
-# 2D 8-point DA-based DCT Design (not edited yet)
+# 2D 8-point DA-based DCT Design
 
 ## Table of Contents
 - [Overview](#overview)
