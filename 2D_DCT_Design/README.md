@@ -1,4 +1,4 @@
-# 2D DCT (Discrete Cosine Transform) Design
+# 2D 8-point DA-based DCT Design
 
 ## Table of Contents
 - [Overview](#overview)
@@ -13,7 +13,13 @@
 
 This project implements a 2D 8-point Discrete Cosine Transform (DCT) using Verilog HDL. The 2D DCT is a fundamental mathematical method used in signal processing and image compression, commonly applied in JPEG and MPEG standards.
 The 2D Discrete Cosine Transform converts spatial domain image data into frequency domain representation. It decomposes the original signal or image into a weighted sum of cosine functions, where high-frequency components can be quantized to achieve compression.
-This project can be summarized 
+This project can be summarized in the following points:
+1. **Distributed Architecture (DA)**: Effectively reduces multiplication operations and hardware complexity
+2. **Coefficient Transpose Method**: Enables 2D DCT through two 1D operations
+3. **Fixed-Point Optimization**: Balances precision (SQNR ≥ 40 dB) with hardware efficiency
+4. **Synthesis Optimization**: Explores timing-area-power trade-offs through multiple constraints and compile strategies
+
+
 ### Mathematical Expression
 
 <div align="center">
@@ -225,18 +231,6 @@ y6 = [x0-x3-x4+x7]×c6 + [x1-x2-x5+x6]×(-c2)
 y7 = [x0-x7]×c7 + [x1-x6]×(-c5) + [x2-x5]×c3 + [x3-x4]×(-c1)
 ```
 
-**Key Advantages**:
-- Replaces multiplications with additions and shifts
-- Reduces hardware complexity
-- Enables efficient pipeline processing
-
-<div align="center">
-  <img src="media/da_comparison.png" alt="DA vs Traditional" width="500"/>
-  <p><i>Figure: (a) Traditional multiplication (b) Distributed Architecture</i></p>
-</div>
-
----
-
 #### Second 1D DCT Operation (Matrix Multiplication with Transposed Coefficients):
 ```
 z0 = [y0+y4]×c4 + y1×c1 + y2×c2 + y3×c3 + y5×c5 + y6×c6 + y7×c7
@@ -261,39 +255,17 @@ The complete Verilog implementation includes:
 4. **2nd DCT Module**: Matrix multiplication with transposed coefficients
 5. **Output Stage**: Final 8×8 DCT coefficient output
 
-<div align="center">
-  <img src="media/rtl_diagram.png" alt="RTL Block Diagram" width="700"/>
-</div>
 
----
+### ◆ Step 5: Verification
+
 
 ## RTL Waveform
-
-### MATLAB Verification Results
 
 <div align="center">
   <img src="media/matlab_verification.png" alt="MATLAB Verification" width="800"/>
   <p><i>Figure: MATLAB floating-point vs. fixed-point comparison</i></p>
 </div>
 
-### Simulation Waveform
-
-*To be added: VCS simulation waveform using nWave*
-
-**Simulation Steps**:
-```bash
-# 1. Copy setup file
-cp ~/../Lab/.synopsys_dc.setup .
-
-# 2. Run synthesis
-dc_shell-xg-t -f dct.tcl
-
-# 3. Generate VCD file
-vcs --full64 -R TM.v DCT2D.v
-
-# 4. View waveform
-nWave
-```
 
 ---
 
@@ -301,46 +273,16 @@ nWave
 
 ### Timing Analysis
 
-Synthesis was performed with four different timing constraints:
-
-| Timing Constraint | Slack (ns) | Area (μm²) | Power (mW) | Status |
-|-------------------|------------|------------|------------|--------|
-| 10 ns | 0.00 | - | - | ✅ Met |
-| 8 ns | 0.00 | - | - | ✅ Met |
-| 7 ns | 0.00 | - | - | ✅ Met |
-| 6 ns | < 0 | - | - | ❌ Failed |
-
 **Observation**: As timing constraint decreases, both area and power consumption increase significantly.
 
 ---
 
 ### Compile Ultra Optimization
 
-For the 6ns timing constraint that failed, `compile_ultra` was applied:
-
-| Optimization | Timing (ns) | Slack (ns) | Area (μm²) | Power (mW) |
-|--------------|-------------|------------|------------|------------|
-| No Ultra | 6 | < 0 | - | - |
-| 1× Ultra | - | < 0 (improved) | ↓ Reduced | ↓ Reduced |
-| 2× Ultra | ↓ Best | < 0 | ↑ Worse than 1× | ↑ 2× higher |
-
 **Analysis**: 
 - Single `compile_ultra` improves timing, area, and power but still fails timing
 - Double `compile_ultra` achieves better timing but with significantly increased power (>2×)
 - Trade-off between timing, area, and power must be carefully considered
 
----
 
-## Conclusion
-
-This project demonstrates the implementation of 2D DCT using:
-
-1. **Distributed Architecture (DA)**: Effectively reduces multiplication operations and hardware complexity
-2. **Coefficient Transpose Method**: Enables 2D DCT through two 1D operations
-3. **Fixed-Point Optimization**: Balances precision (SQNR ≥ 40 dB) with hardware efficiency
-4. **Synthesis Optimization**: Explores timing-area-power trade-offs through multiple constraints and compile strategies
-
-The design showcases a complete flow from algorithm analysis (MATLAB) to RTL implementation (Verilog) to physical synthesis, providing practical experience in VLSI digital signal processing design.
-
----
 
