@@ -114,7 +114,7 @@ The design methodology consists of three main parts: coefficient bit-width calcu
 **Objective**: Determine the minimum bit width required to achieve SQNR ≥ 40 dB.
 
 <div align="center">
-  <img src="media/bit_cal.png" alt="SQNR Analysis" width="600"/>
+  <img src="media/bar_pic.png" alt="SQNR Analysis" width="600"/>
   <p><i>Figure: SQNR vs. Coefficient Bit-Width</i></p>
 </div>
 
