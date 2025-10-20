@@ -194,10 +194,15 @@ The complete Verilog implementation includes:
 &nbsp;
 
 ## RTL Waveform & Comparison with MATLAB
+The following rwo figures show the Verilog results and the Matlab results. it can be seen from the figures that the Verilog results are consistent with the Matlab results.
+<div align="center">
+  <img src="media/verilog_result.png" alt="Verilog Result" width="500"/>
+  <p><i>Figure: Verilog Result</i></p>
+</div>
 
 <div align="center">
-  <img src="media/verilog_result.png" alt="Verilog Result" width="800"/>
-  <p><i>Figure: MATLAB floating-point vs. fixed-point comparison</i></p>
+  <img src="media/matlab_result.png" alt="Matlab Result" width="500"/>
+  <p><i>Figure: Matlab Result</i></p>
 </div>
 
 
@@ -205,11 +210,11 @@ The complete Verilog implementation includes:
 
 ## Synthesis Results
 
+Due to process confidentiality reasons, the synthesis result data is not presented, but we can still perform "timing analysis" and "compile ultra result" analysis.
+
 ### Timing Analysis
 
 **Observation**: As timing constraint decreases, both area and power consumption increase significantly.
-
----
 
 ### Compile Ultra Optimization
 
