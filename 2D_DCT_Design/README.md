@@ -27,7 +27,7 @@ This project can be summarized in the following points:
 The 2D DCT is computed through two sequential 1D DCT operations, the following figure is the architecture of 1D DCT:
 
 <div align="center">
-  <img src="media/dct_matrix.png" alt="2D DCT Equation" width="500"/>
+  <img src="media/dct_matrix.png" alt="2D DCT Equation" width="700"/>
 </div>
 
 And the figure below is the flow chart of the design:
