@@ -20,18 +20,19 @@ This project can be summarized in the following points:
 4. **Synthesis Optimization**: Explores timing-area-power trade-offs through multiple constraints and compile strategies
 
 
-### Mathematical Expression
+### Mathematical Expression & Design Flow
+
+The 2D DCT is computed through two sequential 1D DCT operations, the following figure is the architecture of 1D DCT:
 
 <div align="center">
-  <img src="media/2d_dct_equation.png" alt="2D DCT Equation" width="500"/>
+  <img src="media/dct_matrix.png" alt="2D DCT Equation" width="500"/>
 </div>
 
-Where:
-- `Y(u,v)` is the DCT output
-- `X(i,j)` is the input image pixel value
-- Image dimensions: 8×8
-- `u,v` are DCT frequency indices
-- `C(u),C(v)` are normalization constants
+And the figure below is the flow chart of the design:
+
+<div align="center">
+  <img src="media/flow_chart.png" alt="flow chart" width="800"/>
+</div>
 
 ### Key Features
 
@@ -40,35 +41,9 @@ Where:
 - **Fixed-Point Arithmetic**: Uses 8-bit (7-bit + 1 sign bit) coefficient representation
 - **8×8 Block Processing**: Standard size for JPEG compression
 
-### Design Approach
-
-The 2D DCT is computed through two sequential 1D DCT operations:
-```
-Input Data (8×8)
-      ↓
-  1st DCT (DA Architecture)
-      ↓
-  Transpose Coefficients
-      ↓
-  2nd DCT (Matrix Multiplication)
-      ↓
-Output Data (8×8)
-```
-
----
-
 ## Implement Status
 
-✅ **Completed**:
-- MATLAB coefficient bit-width calculation and SQNR analysis
-- Distributed Architecture (DA) based 1D DCT implementation
-- 2D DCT using coefficient transpose method
-- Fixed-point arithmetic with 8-bit coefficients
-- Verilog RTL design and simulation
-- Synthesis with multiple timing constraints (10ns, 8ns, 7ns, 6ns)
-
-🔄 **Optimization**:
-- Compile ultra for timing optimization at 6ns constraint
+Synthesis completed.
 
 ---
 
@@ -76,49 +51,26 @@ Output Data (8×8)
 
 | File Name | Description |
 |-----------|-------------|
-| `DCT2D.v` | Main RTL module implementing the 2D 8-point DCT |
-| `TM.v` | Testbench for verification and simulation |
-| `dct.tcl` | Synthesis script for Design Compiler |
-| `bits_calculate.m` | MATLAB script for coefficient bit-width calculation and SQNR analysis |
+| `2D_DCT.v` | Main RTL module implementing the 2D 8-point DCT |
 | `coeff_conversion.m` | MATLAB script for converting floating-point coefficients to binary |
-| `verification.m` | MATLAB script for result verification |
 | `coeff_binary.txt` | List of 8-bit binary coefficients (c1~c7) |
 
----
 
 ## Specification
 
-### Module Interface
-
-#### Input Ports
+### Input Ports
 
 | Port Name | Width | Description |
 |-----------|-------|-------------|
 | `clk` | 1-bit | System clock signal - synchronizes all DCT operations |
 | `rst` | 1-bit | Reset signal - initializes the DCT module |
-| `start` | 1-bit | Start signal - triggers DCT computation |
-| `in` | 8-bit × 64 | Input data - 8×8 block of pixel values |
+| `x0~x7` | 8-bit | Input data - 8×8 block of pixel values |
 
-#### Output Ports
+### Output Ports
 
 | Port Name | Width | Description |
 |-----------|-------|-------------|
-| `out` | N-bit × 64 | DCT coefficients - 8×8 frequency domain output |
-| `valid` | 1-bit | Output valid signal - indicates computation completion |
-
----
-
-### Design Parameters
-
-| Parameter | Value | Description |
-|-----------|-------|-------------|
-| Block Size | 8×8 | Standard DCT block dimension |
-| Coefficient Width | 8-bit | 7-bit mantissa + 1 sign bit |
-| Input Width | 8-bit | Signed input pixel values |
-| Target SQNR | ≥ 40 dB | Signal-to-Quantization-Noise Ratio requirement |
-| Architecture | DA | Distributed Architecture for reduced multiplications |
-
----
+| `z0~z7` | 34-bit | DCT coefficients - 8×8 frequency domain output |
 
 ### DCT Coefficients
 
