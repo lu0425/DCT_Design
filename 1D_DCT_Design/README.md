@@ -1,4 +1,4 @@
-# 1D 8-point DCT Design
+# 1D 8-point DA-based DCT Design
 
 ## Table of Contents
 - [Overview](#overview)
@@ -40,7 +40,7 @@ Where:
 - `θ = π/16`
 
 
-### Design Approach
+### Distributed Arithmetic
 
 The implementation leverages the **symmetric and anti-symmetric properties** of the DCT coefficient matrix to reorganize computations:
 
