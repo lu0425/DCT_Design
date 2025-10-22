@@ -57,7 +57,7 @@ By factoring out common coefficients and pre-computing differences like `[X(0) -
 
 ## Implement Status
 
-Synthesis completed.
+The project has completed gate-level simulation.
 
 &nbsp;
 
