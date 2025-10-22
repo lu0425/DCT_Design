@@ -47,7 +47,7 @@ And the figure below is the flow chart of the design:
 
 ## Implement Status
 
-Synthesis completed.
+The project has completed gate-level simulation.
 
 &nbsp;
 
